@@ -1,80 +1,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
-.attendance-checkbox{
-    margin-left:35px; 
-    
+.attendance-checkbox {
+    margin-left: 35px;
 }
 
-th{
-    color:white;
+th {
+    color: white;
     font-family: "Poppins";
-    size:12px; 
-    
+    size: 12px;
 }
 
-td{
-    color:black;
+td {
+    color: black;
     font-family: "Poppins";
-    size:12px; 
-    
+    size: 12px;
 }
 
-h1{
+h1 {
     font-family: "Poppins";
-    font-weight:530; 
-    margin-top:20px; 
-    margin-left:-1px; 
-    margin-bottom:10px; 
-
+    font-weight: 530;
+    margin-top: 20px;
+    margin-left: -1px;
+    margin-bottom: 10px;
+    padding: 14px; 
+    background: #17a2b8; 
+    color: white; 
+    border-width:3px; 
+    border: 2px solid #000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-body{
-    margin-left:30px; 
-    margin-right:40px; 
+body {
+    margin-left: 30px;
+    margin-right: 40px;
 }
 
 
-  
-button:hover {
-    color:whitesmoke;
-    background-color:#89ABE3;
-    font-size: 110%;
-    transition: all 0.3s ease 0s;
-  }
 
-  .registration-box {
-    margin-top: 10px; 
-   
+.registration-box {
+    margin-top: 10px;
     padding: 5px;
-    height:100px; 
     width: 100%;
-  
-    margin-bottom:5px; 
-   
+    margin-bottom: 5px;
 }
 
-
-.form-inline {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-
-.form-inline .form-group {
-    margin-right: 20px;
-}
-
-.form-inline h1, .form-inline h4, .form-inline h5, .form-inline h6 {
-    margin-right: 10px;
-}
-
-h4{
-    font-size:14px; 
-    font-weight:700;
+h4 {
+    font-size: 14px;
+    font-weight: 700;
     font-family: "Poppins";
-    margin-top: 8px; 
-    left:-12px; 
-    position:relative; 
+    margin-top: 8px;
     
+    position: relative;
 }
