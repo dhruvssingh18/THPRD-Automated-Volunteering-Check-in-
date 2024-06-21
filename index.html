@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-In List</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/json2csv"></script>
+    <script src="javascript.js"></script>
+</head>
+<body>
+    <h1>Volunteering THPRD Check-IN</h1>
+
+    <div class="registration-box">
+        <div class="form-inline">
+
+            <div style="margin-left:10px;">
+                <h4>Full Name</h3>
+                <input type="text" name="text" id="name" class="form-control" style="width:350px;position:relative;right:14px;"/>
+            </div>
+
+            <div style="margin-left:10px;">
+                <h4 style = "left:-12px;">Time Slot</h4>
+                <input type="text" name="text" id="slot" class="form-control" style="width:350px;position:relative;right:14px;"/>
+            </div>
+
+            <div style="margin-left:10px;">
+                <h4 style = "left:-12px;">Job</h4>
+                <input type="text" name="text" id="job" class="form-control"style="width:350px;position:relative;right:14px;"/>
+            </div>
+
+            <button id="submit" style="margin-left:5px;padding: 7px 35px;position:relative;bottom:-16px; background-color:#008CBA;border:none;cursor:pointer;border-radius:5px;transition: all 0.3s ease 0s;font-family: Poppins;font-weight:600;font-size: 14px;color:whitesmoke;text-decoration: none;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+                    onmouseover="this.style.backgroundColor='#005A8D'"
+                    onmouseout="this.style.backgroundColor='#008CBA'">
+                Register
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <input id="search-input" class="form-control" type="text">
+            </div>
+        </div>
+    </div>
+
+    <table class='table table-striped'>
+        <thead class='bg-info'>
+            <tr>
+                <th data-column = "name" data order = "desc">Full Name &#9650</th>
+                <th data-column = "time slot" data order = "desc">Time Slot &#9650</th>
+                <th data-column = "job" data order = "desc">Job &#9650</th>
+                <th>Attendance &#9650</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+        </tbody>
+    </table>
+    <div id="checkin-list"></div>
+    
+    <button id="btnDownloadCsv" style="margin-left:0px;float:bottom; padding: 7px 30px;background-color:#008CBA;border:none;cursor:pointer;border-radius:5px;transition: all 0.3s ease 0s;font-family: Poppins;font-weight:600;font-size: 14px;color:whitesmoke;text-decoration: none;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+            onmouseover="this.style.backgroundColor='#005A8D'"
+            onmouseout="this.style.backgroundColor='#008CBA'">
+        Download CSV
+    </button>
+
+    
+</body>
+</html>
