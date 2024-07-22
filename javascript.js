@@ -1,10 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var myArray = [
+    var myArray = JSON.parse(localStorage.getItem('myArray')) || [
         {"name": "John Doe", "time_slot": "9:00 AM - 10:00 AM", "job": "Manager", "attended": false},
         {"name": "Jane Smith", "time_slot": "10:00 AM - 11:00 AM", "job": "Developer", "attended": false},
         {"name": "Mike Johnson", "time_slot": "11:00 AM - 12:00 PM", "job": "Designer", "attended": false}
-        
     ];
+
+    document.getElementById('name').value = localStorage.getItem('name') || "";
+    document.getElementById('slot').value = localStorage.getItem('slot') || "";
+    document.getElementById('job').value = localStorage.getItem('job') || "";
+    document.getElementById('attendance').value = localStorage.getItem('attendance') || "";
     
     buildTable(myArray);
 
@@ -21,108 +25,117 @@ document.addEventListener("DOMContentLoaded", function() {
             table.innerHTML += row;
         }
 
-      
         let checkboxes = document.querySelectorAll(".attendance-checkbox");
         checkboxes.forEach((checkbox, index) => {
             checkbox.addEventListener('change', function() {
                 myArray[index].attended = checkbox.checked;
+                localStorage.setItem('myArray', JSON.stringify(myArray));
             });
         });
     }
 
-    $('#search-input').on('keyup', function(){
+    $('#search-input').on('keyup', function() {
         var value = $(this).val().toLowerCase();
         var filteredData = searchTable(value, myArray);
         buildTable(filteredData);
     });
 
-    function searchTable(value, data){
+    function searchTable(value, data) {
         var filteredData = [];
-        for (var i = 0; i < data.length; i++){
+        for (var i = 0; i < data.length; i++) {
             var name = data[i].name.toLowerCase();
-            if (name.includes(value)){
+            if (name.includes(value)) {
                 filteredData.push(data[i]);
             }
         }
         return filteredData;
     }
 
-    const btnDownloadCsv = document.getElementById("btnDownloadCsv");
-
-    btnDownloadCsv.addEventListener("click", () => {
-       
-        let checkboxes = document.querySelectorAll(".attendance-checkbox");
-        checkboxes.forEach((checkbox, index) => {
-            myArray[index].attended = checkbox.checked;
-        });
-
-        const csv = json2csv.parse(myArray);
-        downloadCsv("checkin_meetname.csv", csv);
-    });
-
-    function downloadCsv(filename, csvData) {
-        const element = document.createElement("a");
-        element.setAttribute("href", `data:text/csv;charset=utf-8,${encodeURIComponent(csvData)}`);
-        element.setAttribute("download", filename);
-        element.style.display = "none";
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
-    }
-
     const submitButton = document.getElementById("submit");
+  
+
+    var form = document.getElementById('sheetdb-form');
+    form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+   
+});
+
+document.getElementById("name").addEventListener("input", function() {
+    localStorage.setItem('name', this.value);
+});
+document.getElementById("slot").addEventListener("input", function() {
+    localStorage.setItem('slot', this.value);
+});
+document.getElementById("job").addEventListener("input", function() {
+    localStorage.setItem('job', this.value);
+});
+document.getElementById("attendance").addEventListener("input", function() {
+    localStorage.setItem('attendance', this.value);
+});
+
 
     submitButton.addEventListener("click", function() {
         const registeredname = document.getElementById("name").value;
         const registeredslot = document.getElementById("slot").value;
         const registeredjob = document.getElementById("job").value;
-    
-        console.log("Name:", registeredname);
-        console.log("Time Slot:", registeredslot);
-        console.log("Job:", registeredjob);
-    
+        const registeredattendance = document.getElementById("attendance").value.toLowerCase();
 
         if (registeredname && registeredslot && registeredjob) {
             var userDetail = {
                 "name": registeredname,
                 "time_slot": registeredslot,
-                "job": registeredjob
+                "job": registeredjob,
+                "attended": registeredattendance === "true"
             };
-            myArray.push(userDetail);
 
+            localStorage.setItem('myArray', JSON.stringify(myArray));
+            myArray.push(userDetail);
             buildTable(myArray);
-            console.log(userDetail);
 
             document.getElementById("name").value = "";
             document.getElementById("slot").value = "";
             document.getElementById("job").value = "";
-
-         
-        
-        } else {
-            alert("Please fill in all fields.");
+            document.getElementById("attendance").value = "";
         }
+        
+       
+
+        console.log(registeredname, registeredslot, registeredjob, registeredattendance)
         
     });
 
-    $('th').on('click', function() {
-        var column = $(this).data('column');
-        var order = $(this).data('order');
-        var text = $(this).html();
-        text = text.substring(0, text.length - 1);
+    document.getElementById("clear").addEventListener("click", function() {
+        localStorage.clear();
+        location.reload();
+    });
 
-        if (order == 'desc') {
-            $(this).data('order', "asc");
-            myArray.sort((a, b) => a[column] > b[column] ? 1 : -1);
-            text += '&#9650';
-        } else {
-            $(this).data('order', "desc");
-            myArray.sort((a, b) => a[column] < b[column] ? 1 : -1);
-            text += '&#9660';
-        }
-        $(this).html(text);
-        buildTable(myArray);
+    document.getElementById("copy-log").addEventListener("click", function() {
+        const logData = printDataValues(myArray);
+        document.getElementById("log-data").value = logData;
     });
 
 
+    function printDataValues(data) {
+        let logString = 'Name\tTime Slot\tJob\tAttended\n'; 
+        data.forEach(entry => {
+            logString += `${entry.name}\t${entry.time_slot}\t${entry.job}\t${entry.attended}\n`;
+        });
+        console.log(logString);
+        return logString;
+    }
+    
+
+    document.getElementById("copy-log").addEventListener("click", function() {
+        const logData = printDataValues(myArray);
+        document.getElementById("log-data").value = logData;
+    });
+    
 });
+
+}); 
+
+
+
