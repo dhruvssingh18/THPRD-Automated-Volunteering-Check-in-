@@ -1,0 +1,102 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Check-In List</title>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/json2csv"></script>
+        <script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://script.google.com/macros/s/AKfycby3u4LHPneHlC-KtvheO0w55YsRH0yEKgLEH0aUIs0vuNK6Lc4_XR-cdxWfKp-lExd0ow/exec"></script>
+        <link rel="stylesheet" href="styles.css"> 
+        <script src="javascript.js"></script>
+    </head>
+    <body>
+        <h1>Volunteering THPRD Check-IN</h1>
+
+        <div class="registration-box">
+            <form action = "https://sheetdb.io/api/v1/1qgquh5ohjxmt" method = "Post" id = "sheetdb-form">
+            <div class="form-row">
+                
+                <div class="col-md-4 mb-3">
+                    <label for="name"><h4>Full Name</h4></label>
+                    <input type="text" name="data[Name]" id="name" class="form-control"/>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="slot"><h4>Time Slot</h4></label>
+                    <input type="text" name="data[Slot]" id="slot" class="form-control"/>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="job"><h4>Job</h4></label>
+                    <input type="text" name="data[Job]" id="job" class="form-control"/>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="attendance"><h4>Attendance</h4></label>
+                    <input type="text" name="data[Attendance]" id="attendance" class="form-control" placeholder="True/False"/>
+                </div>
+            </form>
+                <div class="col-md-12 mb-3">
+                    <button 
+    id="submit" 
+    
+    class="btn btn-primary" 
+    style="padding: 7px 35px; background-color:#008CBA; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+    onmouseover="this.style.backgroundColor='#005A8D'"
+    onmouseout="this.style.backgroundColor='#008CBA'">
+    Register
+</button>
+
+                
+                    
+        <a href="https://docs.google.com/spreadsheets/d/1cf7VGtMIHrUrfwJijrRGFY3-3yuEcVSi-NJLP1Zmgxc/edit?usp=sharing" class="btn" target="_blank" style="padding: 7px 30px; background-color:#008CBA; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+        onmouseover="this.style.backgroundColor='#005A8D'"
+        onmouseout="this.style.backgroundColor='#008CBA'">
+        View CSV</a>
+
+        <button class="btn" target="_blank" id = "clear" style="padding: 7px 30px; background-color:#008CBA; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+        onmouseover="this.style.backgroundColor='#005A8D'"
+        onmouseout="this.style.backgroundColor='#008CBA'">
+        Clear Storage</button>
+
+        <button class="btn" target="_blank" id = "copy-log" style="padding: 7px 30px; background-color:#008CBA; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+        onmouseover="this.style.backgroundColor='#005A8D'"
+        onmouseout="this.style.backgroundColor='#008CBA'">
+        Copy Log Data</button>
+                </div>  
+                
+            </div>
+        </div>
+
+    <textarea id="log-data" placeholder="Log data will appear here" rows="10" cols="50"></textarea>
+
+       
+     
+
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card card-body">
+                    <input id="search-input" class="form-control" type="text" placeholder="Search">
+                </div>
+            </div>
+        </div>
+
+        <table class='table table-striped mt-3'>
+            <thead class='bg-info'>
+                <tr>
+                    <th data-column="name" data-order="desc">Full Name &#9650;</th>
+                    <th data-column="slot" data-order="desc">Time Slot &#9650;</th>
+                    <th data-column="job" data-order="desc">Job &#9650;</th>
+                    <th>Attendance &#9650;</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+            </tbody>
+        </table>
+    
+  </body>
+    </html>
