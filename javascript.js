@@ -138,4 +138,3 @@ document.getElementById("attendance").addEventListener("input", function() {
 }); 
 
 
-
