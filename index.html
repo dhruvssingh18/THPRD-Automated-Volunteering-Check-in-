@@ -16,76 +16,70 @@
     <body>
         <h1>Volunteering THPRD Check-IN</h1>
 
+        <h5 style = "margin-top: 40px;">Registration Form</h5>
+        <h2 class = "ptext">Fill out this Form to Register for a Volunteering Spot</h2>
+        <hr class="custom-hr1">
         <div class="registration-box">
             <form method = "Post" id = "sheetdb-form">
             <div class="form-row">
                 
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="name"><h4>Full Name</h4></label>
                     <input type="text" name="data[Name]" id="name" class="form-control"/>
                 </div>
 
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="slot"><h4>Time Slot</h4></label>
                     <input type="text" name="data[Slot]" id="slot" class="form-control"/>
                 </div>
 
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="job"><h4>Job</h4></label>
                     <input type="text" name="data[Job]" id="job" class="form-control"/>
                 </div>
 
-                <div class="col-md-4 mb-3">
+                
+                <div class="col-md-3 mb-3">
                     <label for="attendance"><h4>Attendance</h4></label>
                     <input type="text" name="data[Attendance]" id="attendance" class="form-control" placeholder="True/False"/>
                 </div>
-            </form>
-                <div class="col-md-12 mb-3">
-                    <button 
-    id="submit" 
-    
-    class="btn btn-primary" 
-    style="padding: 7px 35px; background-color:#008CBA; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
-    onmouseover="this.style.backgroundColor='#005A8D'"
-    onmouseout="this.style.backgroundColor='#008CBA'">
-    Register
-</button>
 
-                
+                 <div class="col-md-3 mb-3">
                     
-        <a href="https://docs.google.com/spreadsheets/d/1cf7VGtMIHrUrfwJijrRGFY3-3yuEcVSi-NJLP1Zmgxc/edit?usp=sharing" class="btn" target="_blank" style="padding: 7px 30px; background-color:#008CBA; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
-        onmouseover="this.style.backgroundColor='#005A8D'"
-        onmouseout="this.style.backgroundColor='#008CBA'">
-        View CSV</a>
-
-        <button class="btn" target="_blank" id = "clear" style="padding: 7px 30px; background-color:#008CBA; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
-        onmouseover="this.style.backgroundColor='#005A8D'"
-        onmouseout="this.style.backgroundColor='#008CBA'">
-        Clear Storage</button>
-
-        <button class="btn" target="_blank" id = "copy-log" style="padding: 7px 30px; background-color:#008CBA; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
-        onmouseover="this.style.backgroundColor='#005A8D'"
-        onmouseout="this.style.backgroundColor='#008CBA'">
-        Copy Log Data</button>
-                </div>  
-                
+                    <button 
+                    id="submit" 
+                    
+                    class="register" 
+                    style="padding: 7px 50px; background-color:#333D79FF; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+                    onmouseover="this.style.backgroundColor='#333D79FF'"
+                    onmouseout="this.style.backgroundColor='#333D79FF'">
+                    Register
+                </button>
             </div>
-        </div>
 
-    <textarea id="log-data" placeholder="Sign Up Data will appear here" rows="10" cols="50"></textarea>
+                </div>
 
-       
-     
+                
 
-        <div class="row mt-3">
-            <div class="col">
-                <div class="card card-body">
-                    <input id="search-input" class="form-control" type="text" placeholder="Search">
+                </div>
+
+               
+            </form>
+                
+           
+
+            <h5 style = "margin-top: 10px;">Registered Volunteers</h5>
+            <h2 class = "ptext">Double Check and Adjust your Attendance Accordingly</h2>
+            <hr class="custom-hr1">
+    <div class="table-container">
+        <table class='table table-striped mt-3'>
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="card card-body">
+                        <input id="search-input" class="form-control" type="text" placeholder="Search">
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <table class='table table-striped mt-3'>
             <thead class='bg-info'>
                 <tr>
                     <th data-column="name" data-order="desc">Full Name &#9650;</th>
@@ -97,6 +91,42 @@
             <tbody id="myTable">
             </tbody>
         </table>
+        <h5 style = "margin-top: 40px;">Check-In Adminstration</h5>
+        <h2 class = "ptext2">Interface for Volunteers Running Check-In</h2>
+        <hr class="custom-hr1">
+
+    </div>
+
+       
+        
+
+       
+
+        <div class="formcarry-container">
+        <textarea placeholder = "User Data will Appear Here" name ="message" id="log-data" cols="30" rows="10"></textarea>
+        <div class = "btn-contain">
+            <div class="col-md-12 mb-3">
+                <a href="https://docs.google.com/spreadsheets/d/1cf7VGtMIHrUrfwJijrRGFY3-3yuEcVSi-NJLP1Zmgxc/edit?usp=sharing" class="btn" target="_blank" style="padding: 7px 30px; background-color:#333D79FF; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+            onmouseover="this.style.backgroundColor='#333D79FF'"
+            onmouseout="this.style.backgroundColor='#333D79FF'">
+            View CSV</a>
     
+            <button class="btn" target="_blank" id = "copy-log" style="padding: 7px 30px; background-color:#333D79FF; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+            onmouseover="this.style.backgroundColor='#333D79FF'"
+            onmouseout="this.style.backgroundColor='#333D79FF'">
+            Log Data</button>
+           
+            <button class="btn" target="_blank" id = "clear" style="padding: 7px 30px; background-color:#333D79FF; border:none; cursor:pointer; border-radius:5px; font-family: Poppins; font-weight:600; font-size: 14px; color:whitesmoke; text-decoration: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"
+            onmouseover="this.style.backgroundColor='#333D79FF'"
+            onmouseout="this.style.backgroundColor='#333D79FF'">
+            Clear Storage</button>
+    
+           
+                    </div>  
+            
+        </div>
+        </div>
+
+        
   </body>
     </html>
